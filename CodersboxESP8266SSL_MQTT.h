@@ -270,11 +270,11 @@ public:
       return;
     }
 
-    _mqttHost = credsDoc["host"];
-    _mqttUser = credsDoc["user"];         
-    _mqttPass = credsDoc["pass"];
+    _mqttHost = "1d0a4037d8f645b9ab69895b4d041632.s1.eu.hivemq.cloud"; //credsDoc["host"];
+    _mqttUser = "codersboxmqtt"; //credsDoc["user"];         
+    _mqttPass = "c0dersb0xMQTT"; //credsDoc["pass"];
        
-    Serial.printf("\n[CDB] : Get credential from Codersbox success with Host = %s, User = %s, Pass = %s\n", _mqttHost, _mqttUser, _mqttPass);
+    // Serial.printf("\n[CDB] : Get credential from Codersbox success with Host = %s, User = %s, Pass = %s\n", _mqttHost, _mqttUser, _mqttPass);
   }
 
 private:
