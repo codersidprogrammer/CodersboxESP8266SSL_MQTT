@@ -23,19 +23,17 @@ void callback(char *topic, byte *payload, unsigned int length)
 {
   Codersbox.setPayload(payload);
   float temp = Codersbox.getDataByField<float>("temperature");
-  float humid = Codersbox.getDataByField<float>("humidity");
-  pwmValue = Codersbox.getDataByField<int>("pwmValue");
-  // ledStatus = Codersbox.getDataByField<bool>("relayState");
-  Serial.printf("[DEBUG] : Temperature = %f, PWM = %d, humidity = %f \n", temp, pwmValue, humid);
-  // if (ledStatus)
-  // {
-  //   digitalWrite(LED_BUILTIN, LOW);
-  // }
-  // else
-  // {
-  //   digitalWrite(LED_BUILTIN, HIGH);
-  // }
-  analogWrite(LED_BUILTIN, pwmValue);
+  float humid = Codersbox.getDataByField<float>("humiditas");
+  ledStatus = Codersbox.getDataByField<boolean>("relay");
+   if (ledStatus)
+   {
+     digitalWrite(LED_BUILTIN, LOW);
+   }
+   else
+   {
+     digitalWrite(LED_BUILTIN, HIGH);
+   }
+  Serial.printf("[DEBUG] : Temperature = %f, Relay(LED) = %d, humidity = %f \n", temp, ledStatus, humid);
 }
 
 /**
@@ -52,8 +50,8 @@ void sendData()
   }
 
   Codersbox.setField("temperature", t);
-  Codersbox.setField("humidity", h);
-  Codersbox.setField("pwmValue", pwmValue);
+  Codersbox.setField("humiditas", h);
+  Codersbox.setField("relay", ledStatus);
   Codersbox.sendData();
 }
 
